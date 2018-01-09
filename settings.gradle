@@ -1,0 +1,1 @@
+include ':datareactdemo', ':datareact',":datareactcompiler",'datareactcommon'

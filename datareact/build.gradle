@@ -1,0 +1,100 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings false
+        lintConfig file("../lint.xml")
+        xmlReport true
+        htmlReport false
+        xmlOutput file("report/lint-results.xml")
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "boolean", "IS_MONKEY", "false"
+    }
+
+    sourceSets {
+        main.res.srcDirs += 'src/main/res'
+        main.res.srcDirs += '../datareact/src/main/res'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('extLibs/datareactcommon.jar')
+    provided fileTree(include: '*.jar', dir: './../paopao_common_library/extLibs')
+}
+
+ext {
+    mavenPassword = ''
+    mavenUserName = ''
+    mavenUrl = ''
+
+    def f = file("$projectDir/publish.properties")
+    if (f.exists()) {
+        def prop = new Properties()
+        f.withInputStream { is ->
+            prop.load(is)
+            mavenUrl = prop.getProperty("maven.url")
+            mavenUserName = prop.getProperty("maven.username")
+            mavenPassword = prop.getProperty("maven.password")
+        }
+    } else {
+        logger.info "Please config a publish.properties file from publish.properties.template properly"
+    }
+}
+
+def compilerArchiveName = 'datareact-release.aar'
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        dataReact(MavenPublication) {
+            groupId 'org.iqiyi.datareact'
+            artifactId 'datareact'
+            version '1.0.5'
+            artifact("$buildDir/outputs/aar/$compilerArchiveName")
+        }
+
+    }
+    repositories {
+        maven {
+            url mavenUrl
+            if (mavenUserName != '') {
+                credentials{
+                    username mavenUserName
+                    password mavenPassword
+                }
+            }
+        }
+    }
+}
+
+afterEvaluate {
+    tasks.findByPath(":datareact:publishDataReactPublicationToMavenRepository")
+}
+
+task doDataReactPublish(dependsOn: 'publishDataReactPublicationToMavenRepository') {
+    //Empty configuration.
+}
+
+//task makeDataReactJar(type: Jar) {
+//    archiveName = 'datareact.jar'
+//    delete 'build/libs/datareact.jar'
+//    from('build/intermediates/classes/debug/')
+//    from(project.zipTree("extLibs/datareactcommon.jar"))
+//    include('com/iqiyi/**/*.class')
+//    include('android/arch/**/*.class')
+//    destinationDir = file('build/libs')
+//
+//}
+//
+//makeDataReactJar.dependsOn(build)

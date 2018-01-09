@@ -1,0 +1,16 @@
+<manifest package="org.iqiyi.datareact"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    -->
+    <application
+        android:supportsRtl="true">
+        <provider
+            android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="${applicationId}.lifecycle"
+            android:exported="false"
+            android:multiprocess="false" />
+    </application>
+
+</manifest>

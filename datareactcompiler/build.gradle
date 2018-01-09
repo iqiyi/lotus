@@ -1,0 +1,86 @@
+apply plugin: 'java'
+
+dependencies {
+    compile 'com.google.auto.service:auto-service:1.0-rc2'
+    compile project(':datareactcommon')
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+sourceSets{
+    main{
+        java.srcDirs = ['src/main/java']
+    }
+}
+
+
+ext {
+    mavenPassword = ''
+    mavenUserName = ''
+    mavenUrl = ''
+
+    def f = file("$projectDir/publish.properties")
+    if (f.exists()) {
+        def prop = new Properties()
+        f.withInputStream { is ->
+            prop.load(is)
+            mavenUrl = prop.getProperty("maven.url")
+            mavenUserName = prop.getProperty("maven.username")
+            mavenPassword = prop.getProperty("maven.password")
+        }
+    } else {
+        logger.info "Please config a publish.properties file from publish.properties.template properly"
+    }
+}
+
+def compilerArchiveName = 'datareactcompiler.jar'
+
+apply plugin: 'maven-publish'
+
+void addDependency(dependenciesNode, groupId, artifactId, version) {
+    def dependencyNode = dependenciesNode.appendNode('dependency')
+    dependencyNode.appendNode('groupId', groupId)
+    dependencyNode.appendNode('artifactId', artifactId)
+    dependencyNode.appendNode('version', version)
+}
+
+publishing {
+    publications {
+        ppAnnotation(MavenPublication) {
+            groupId 'org.iqiyi.datareact.annotation'
+            artifactId 'datareactcompiler'
+            version '1.0.0'
+            artifact("$buildDir/libs/$compilerArchiveName")
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                addDependency(dependenciesNode, 'org.iqiyi.datareact', 'datareactcommon', '1.0.0')
+                addDependency(dependenciesNode, 'com.google.auto.service', 'auto-service', '1.0-rc2')
+            }
+
+        }
+
+    }
+    repositories {
+        maven {
+            url mavenUrl
+            if (mavenUserName != '') {
+                credentials{
+                    username mavenUserName
+                    password mavenPassword
+                }
+            }
+        }
+    }
+}
+
+task doDataReactAnnotationPublish(dependsOn: 'publishPpAnnotationPublicationToMavenRepository') {
+    //Empty configuration.
+}
+
+
+
