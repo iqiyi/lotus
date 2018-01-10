@@ -3,7 +3,8 @@
 Lotus: a library for handling interaction between pages or modules in Android. 
 Implemented based on Google Lifecycle-aware and the classic observer pattern.
 
-##Features
+Features
+-------------------
 
 **Observers have life-cycle attributes**  Observers bind lifecycle owner(Activity/Fragment) with an API. Lifecycle-aware components perform actions in response to a change in the lifecycle status of another component, such as activities and fragments.
 
