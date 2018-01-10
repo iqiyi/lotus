@@ -42,7 +42,9 @@ Getting started
 ```
 
 
-###License
+License
+-------------------
+
 Copyright (C) 2018 iQIYI.com
 
 Lotus binaries and source code can be used according to the [Apache License, Version 2.0](LICENSE).
