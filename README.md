@@ -2,7 +2,9 @@
 
 Lotus: a library for handling interaction between pages or modules in Android. 
 Implemented based on Google Lifecycle-aware and the classic observer pattern.
-<img src="Data-React.png" width="500" height="187"/>
+<br/>
+<img src="data-react.png" width="500" height="187"/>
+
 Features
 -------------------
 
