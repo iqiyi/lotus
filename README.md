@@ -20,6 +20,7 @@ Features
 
 **Compatible without lifecycle** Lotus provides api for observes without lifecycle.
 
+[Click for Chinese-README](media/15155014289431/Chinese-README.md)
 
 Getting started
 -------------------
