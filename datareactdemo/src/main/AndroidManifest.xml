@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="datareact.iqiyi.com.lotus">
+          package="datareact.iqiyi.com.lotus">
 
     <application
         android:allowBackup="true"
@@ -7,5 +7,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" />
+        android:theme="@style/AppTheme">
+        <activity android:name="com.iqiyi.datareact.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.iqiyi.datareact.activity.FirstActivity"/>
+        <activity android:name="com.iqiyi.datareact.activity.SecondActivity"/>
+        <activity android:name="com.iqiyi.datareact.activity.CommonTestActivity"/>
+        <activity android:name="com.iqiyi.datareact.activity.CommonActivity"/>
+    </application>
 </manifest>

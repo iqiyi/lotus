@@ -1,14 +1,12 @@
 package org.iqiyi.datareact.annotation;
 
 import com.google.auto.service.AutoService;
+
 import org.iqiyi.datareact.ListMap;
-import org.iqiyi.datareact.ThreadMode;
-import org.iqiyi.datareact.annotation.DataSubscribe;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;

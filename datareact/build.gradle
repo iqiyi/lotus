@@ -25,13 +25,15 @@ android {
         main.res.srcDirs += 'src/main/res'
         main.res.srcDirs += '../datareact/src/main/res'
     }
+    buildToolsVersion '26.0.2'
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile files('extLibs/datareactcommon.jar')
+//    compile files('extLibs/datareactcommon.jar')
+    compile fileTree(include: '*.jar', dir: 'extLibs')
     compile "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compileOnly "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
 }
 
 ext {

@@ -1,1 +1,1 @@
-include ':datareactdemo', ':datareact',":datareactcompiler",'datareactcommon'
+include ':datareactdemo', ':datareact',":datareactcompiler"

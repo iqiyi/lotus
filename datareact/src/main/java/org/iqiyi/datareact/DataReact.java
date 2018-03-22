@@ -119,6 +119,19 @@ public class DataReact {
     }
 
     /**
+     * 设置观察某类数据，在主线程调用，观察者会随依附的lifecycle销毁自动销毁
+     * @param dataType 必需，设置要观察的数据类型
+     * @param dataId 非必需 需要精确观察数据id
+     * @param lifecycle 必需，观察者依附的lifecycle
+     * @param observer 必需，观察者
+     */
+    @MainThread
+    public static void observe(String dataType, Object dataId, LifecycleRegistryOwner lifecycle,
+            Observer<Data> observer) {
+        observe(dataType, dataId, lifecycle, observer, false);
+    }
+
+    /**
      * 设置观察某类数据，dataId不空可精准定位某个数据，在主线程调用
      * @param dataType 要观察的数据类型
      * @param dataId 具体数据的id，表示一类数据中精确的某个数据

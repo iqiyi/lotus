@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Hello World!"/>-->
+    <TextView android:id="@+id/tv_comment"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:text="@string/comments_count"/>
+    <TextView android:id="@+id/tv_like"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/tv_comment"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="50dp"
+              android:text="@string/comments_count"
+    />
+    <TextView android:id="@+id/tv_content"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/tv_like"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="50dp"
+              android:text="@string/feed_content"/>
+    <TextView android:id="@+id/tv_detail"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/tv_content"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="50dp"
+              android:text="打开详情"/>
+    <TextView android:id="@+id/tv_start"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/tv_detail"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="50dp"
+              android:text="onStart"/>
+    <TextView android:id="@+id/tv_on_resume"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/tv_start"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="50dp"
+              android:text="onResume"/>
+    <TextView android:id="@+id/tv_on_stop"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/tv_on_resume"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="50dp"
+              android:text="onStop"/>
+    <TextView android:id="@+id/tv_on_destroy"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/tv_on_stop"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="50dp"
+              android:text="onDestroy"/>
+</RelativeLayout>

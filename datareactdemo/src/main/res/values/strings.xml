@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">lotus</string>
+    <string name="comments_count">评论次数:%1$s</string>
+    <string name="is_like">是否点赞:%1$s</string>
+    <string name="feed_content">feed内容:%1$s</string>
 </resources>

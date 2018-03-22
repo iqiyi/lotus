@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+    <EditText
+        android:id="@+id/et_test_data"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="50dp"/>
+    <Button
+        android:id="@+id/btn_send_and_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_test_data"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:background="#e9e9e9"
+        android:padding="2dp"
+        android:text="发送数据关闭页面"
+    />
+</RelativeLayout>
